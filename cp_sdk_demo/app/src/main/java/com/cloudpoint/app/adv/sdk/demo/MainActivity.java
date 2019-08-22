@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         if (null == imageView)
             imageView = (ImageView) ((ViewStub) findViewById(R.id.cb_advertisement_picture)).inflate();
         if (null == videoView)
-            videoView = (VideoView) ((ViewStub) findViewById(R.id.vv_advertisemen_video)).inflate();
+            videoView = (VideoView) (   (ViewStub) findViewById(R.id.vv_advertisemen_video)).inflate();
 
         AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
         if(handler!=null){
