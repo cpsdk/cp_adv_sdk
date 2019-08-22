@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     VideoView videoView;
 
-
+    // 3. 绑定view
     private void bindView(){
         if (null == imageView)
             imageView = (ImageView) ((ViewStub) findViewById(R.id.cb_advertisement_picture)).inflate();

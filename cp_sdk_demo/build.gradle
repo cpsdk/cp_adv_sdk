@@ -14,16 +14,12 @@ buildscript {
     }
 
 
-    // 1. 增加依赖包
-    ext{
 
-        advSdkVersion = '9.0.3'
-    }
 }
 
 allprojects {
     repositories {
-        // 2. maven url
+        // 1. 在工程根目录下增加maven库地址
         maven { url "http://archiva.cpo2o.com:8000/repository/internal" }
         google()
         jcenter()
