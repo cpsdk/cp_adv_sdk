@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.plugins.sdk.adv.CPAdvSdk;
+import com.cloudpoint.shell.adv.DefaultAdvManager;
 
 
 /**
@@ -34,9 +35,12 @@ public class AdvApplication extends Application {
         if(doInitialized){
             // 5. 增加监听接口。
 
+            //DefaultAdvManager defaultAdvManager;
+
             AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
             AdvEventListener advEventListener = new AdvEventListener();
             handler.setAdvertisementEvent(advEventListener);
+            handler.enableManualMode(true);
         }
 
 

@@ -1,7 +1,10 @@
 package com.cloudpoint.app.adv.sdk.demo;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
+import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.shell.adv.Adv;
 import com.cloudpoint.shell.adv.mediaplayer.IAdvertisementEvent;
 import com.cloudpoint.shell.adv.mediaplayer.IAdvertisementPlayerListener;
@@ -29,9 +32,24 @@ public class AdvEventListener implements IAdvertisementEvent {
         return null;
     }
 
+
+
+    Handler handler = new Handler(Looper.getMainLooper());
+
     @Override
-    public void setAdv(Adv adv, boolean b) {
+    public void setAdv(final Adv adv, boolean b) {
         d(adv.toString());
+        //收到广告准备好的信息了。
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                d(" delay 10 seconds play!"+adv.getAdvId());
+                AdvPlayerHandler.getInstance().play(adv);
+            }
+        },10000);
+
+
     }
 
     @Override
