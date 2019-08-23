@@ -44,3 +44,13 @@ implementation "com.cloudpoint.plugins:adv-sdk:9.0.3"s
 ![](./baidu_sdk.png)
 
 
+#### 8. 启用控制播放（延时播放）
+
+![](./delay.png)
+
+#### 9. 接收信息及延时播放
+
+![](./play.png)
+
+
+
