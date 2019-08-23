@@ -41,13 +41,15 @@ public class AdvEventListener implements IAdvertisementEvent {
         d(adv.toString());
         //收到广告准备好的信息了。
 
+        final int seconds = 60;
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                d(" delay 10 seconds play!"+adv.getAdvId());
+                d(" delay "+seconds+" seconds play!"+adv.getAdvId());
                 AdvPlayerHandler.getInstance().play(adv);
             }
-        },10000);
+        },seconds*1000);
 
 
     }
