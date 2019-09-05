@@ -16,6 +16,8 @@ import com.cloudpoint.shell.adv.mediaplayer.IAdvertisementPlayerListener;
  * @copyright Beijing CloudPoint Technology Co.,Ltd.
  * @email qiuzhang.rui@cpoao.com
  * @description:
+ *
+ *
  */
 
 public class AdvEventListener implements IAdvertisementEvent {
@@ -40,16 +42,16 @@ public class AdvEventListener implements IAdvertisementEvent {
     public void setAdv(final Adv adv, boolean b) {
         d(adv.toString());
         //收到广告准备好的信息了。
-
-        final int seconds = 60;
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                d(" delay "+seconds+" seconds play!"+adv.getAdvId());
-                AdvPlayerHandler.getInstance().play(adv);
-            }
-        },seconds*1000);
+        AdvPlayerHandler.getInstance().play(adv);
+//        final int seconds = 60;
+//
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                d(" delay "+seconds+" seconds play!"+adv.getAdvId());
+//                AdvPlayerHandler.getInstance().play(adv);
+//            }
+//        },seconds*1000);
 
 
     }

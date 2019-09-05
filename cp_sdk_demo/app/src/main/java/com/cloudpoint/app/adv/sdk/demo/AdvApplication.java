@@ -44,6 +44,10 @@ public class AdvApplication extends Application {
         }
 
 
+        //6. 设置 location信息
+        CPAdvSdk.setLocation("");
+
+
     }
 
 

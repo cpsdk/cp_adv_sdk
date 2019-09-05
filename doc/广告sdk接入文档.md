@@ -18,7 +18,7 @@ maven { url "http://archiva.cpo2o.com:8000/repository/internal" }
 ![](./sdk_aar.png)
 
 ```
-implementation "com.cloudpoint.plugins:adv-sdk:9.0.3"s
+implementation "com.cloudpoint.plugins:adv-sdk:9.0.29"
 ```
 ##### 3. Application中初化
 
@@ -51,6 +51,11 @@ implementation "com.cloudpoint.plugins:adv-sdk:9.0.3"s
 #### 9. 接收信息及延时播放
 
 ![](./play.png)
+
+
+#### 10.设置位置信息
+
+![](./set_loc.png)
 
 
 
