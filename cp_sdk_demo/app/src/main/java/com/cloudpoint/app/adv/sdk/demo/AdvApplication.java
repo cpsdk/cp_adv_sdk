@@ -84,6 +84,8 @@ public class AdvApplication extends Application {
             String loc =g.toJson(location);
             System.out.println("loc:"+loc);
 
+            //
+            // {"location":{"address":"中国北京市朝阳区北苑路229号","city":"北京市","disrict":"朝阳区","location_desc":"在金泉港附近","province":"北京市","street":"北苑路"},"gps":{"coor_type":"bd09ll","error_code":161,"langtitude":116.423292,"latitude":40.010727,"radius":50.499428}}
             //6. 设置 location信息
             CPAdvSdk.setLocation(loc);
         }
