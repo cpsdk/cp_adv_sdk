@@ -34,6 +34,8 @@ public class AdvApplication extends Application {
         System.setProperty(CPAdvSdk.LOG_FILE,"true");
         System.setProperty(CPAdvSdk.LOG_HTTP,"true");
         System.setProperty(CPAdvSdk.LOG_WEBSOCKET,"true");
+        System.setProperty("CPLoggerEx","true");
+
 
         // 4. 初始化应用
         boolean doInitialized = CPAdvSdk.init(AdvApplication.this);
@@ -68,7 +70,7 @@ public class AdvApplication extends Application {
             address.setAddress("中国北京市朝阳区北苑路229号");
             address.setCity("北京市");
             address.setDistrict("朝阳区");
-            address.setLocationDescrible("在金泉港附近");
+            address.setLocationDescrible("在金泉港附近 国伟aaaa");
             address.setProvince("北京市");
             address.setStreet("北苑路");
 

@@ -36,5 +36,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //implementation project(':cp_adv_sdk')
 
-    implementation "com.cloudpoint.plugins:adv-sdk:9.0.29"
+    implementation "com.cloudpoint.plugins:adv-sdk:1.0.4"
+
+
 }

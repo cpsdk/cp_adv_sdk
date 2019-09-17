@@ -39,6 +39,8 @@ public class AdvEventListener implements IAdvertisementEvent {
     Handler handler = new Handler(Looper.getMainLooper());
 
 
+    private Adv advId;
+    int count = 0;
     /**
      *
      *
@@ -50,11 +52,17 @@ public class AdvEventListener implements IAdvertisementEvent {
     @Override
     public void setAdv(final Adv adv, boolean b) {
         d(adv.toString());
+//        advId = adv;
+//        if(count==0){
+//            AdvPlayerHandler.getInstance().play(adv);
+//            count++;
+//        }
         //收到广告准备好的信息了。
-
-        //开始播放广告，必须在广告超时前完成播放。
         AdvPlayerHandler.getInstance().play(adv);
-//        final int seconds = 60;
+        //开始播放广告，必须在广告超时前完成播放。
+
+
+//        final int seconds = 5;
 //
 //        handler.postDelayed(new Runnable() {
 //            @Override
@@ -95,6 +103,8 @@ public class AdvEventListener implements IAdvertisementEvent {
     @Override
     public void onEnd() {
         d(" onEnd");
+
+
     }
 
     /**
