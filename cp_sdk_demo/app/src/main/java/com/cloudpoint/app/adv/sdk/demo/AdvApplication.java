@@ -48,7 +48,9 @@ public class AdvApplication extends Application {
             AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
             AdvEventListener advEventListener = new AdvEventListener();
             handler.setAdvertisementEvent(advEventListener);
+            //启用手动播放模式
             handler.enableManualMode(true);
+            //关闭轮播图
             handler.enableRoundPlay(false);
 
             /**
