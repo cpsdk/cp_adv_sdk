@@ -58,10 +58,10 @@ public class AdvEventListener implements IAdvertisementEvent {
 //            count++;
 //        }
         //收到广告准备好的信息了。
-        AdvPlayerHandler.getInstance().play(adv);
+
         //开始播放广告，必须在广告超时前完成播放。
-
-
+        AdvPlayerHandler.getInstance().play(adv);
+//
 //        final int seconds = 5;
 //
 //        handler.postDelayed(new Runnable() {
@@ -115,6 +115,21 @@ public class AdvEventListener implements IAdvertisementEvent {
     @Override
     public void onCleanup() {
         d(" onCleanup");
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                AdvPlayerHandler.getInstance().enableAdv(false);
+//            }
+//        },5000);
+//
+//
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                AdvPlayerHandler.getInstance().enableAdv(true);
+//            }
+//        },25000);
+
     }
 
     /**

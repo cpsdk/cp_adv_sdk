@@ -29,16 +29,16 @@ public class AdvApplication extends Application {
         super.onCreate();
 
         // 3.设置日志输出
-        System.setProperty(CPAdvSdk.LOG_ADV,"false");
-        System.setProperty(CPAdvSdk.LOG_DEBUG,"false");
-        System.setProperty(CPAdvSdk.LOG_FILE,"false");
-        System.setProperty(CPAdvSdk.LOG_HTTP,"false");
-        System.setProperty(CPAdvSdk.LOG_WEBSOCKET,"false");
-        System.setProperty(CPAdvSdk.LOG_DEBUG_EX,"false");
+        System.setProperty(CPAdvSdk.LOG_ADV,"true");
+        System.setProperty(CPAdvSdk.LOG_DEBUG,"true");
+        System.setProperty(CPAdvSdk.LOG_FILE,"true");
+        System.setProperty(CPAdvSdk.LOG_HTTP,"true");
+        System.setProperty(CPAdvSdk.LOG_WEBSOCKET,"true");
+        System.setProperty(CPAdvSdk.LOG_DEBUG_EX,"true");
 
 
         // 4. 初始化应用
-        boolean doInitialized = CPAdvSdk.init(AdvApplication.this);
+        boolean doInitialized = CPAdvSdk.init(AdvApplication.this,"201");
 
         if(doInitialized){
             // 5. 增加监听接口。
@@ -49,6 +49,7 @@ public class AdvApplication extends Application {
             AdvEventListener advEventListener = new AdvEventListener();
             handler.setAdvertisementEvent(advEventListener);
             handler.enableManualMode(true);
+            handler.enableRoundPlay(false);
 
             /**
              *

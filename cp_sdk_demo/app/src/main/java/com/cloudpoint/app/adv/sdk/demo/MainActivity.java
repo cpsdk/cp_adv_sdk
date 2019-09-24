@@ -1,6 +1,8 @@
 package com.cloudpoint.app.adv.sdk.demo;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,9 @@ import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
 
         // 3. 绑定view
         bindView();
