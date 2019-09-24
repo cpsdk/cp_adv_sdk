@@ -18,7 +18,7 @@ maven { url "http://archiva.cpo2o.com:8000/repository/internal" }
 ![](./sdk_aar.png)
 
 ```
-implementation "com.cloudpoint.plugins:adv-sdk:1.0.4"
+implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.8"
 ```
 ##### 3. Application中初化
 
@@ -60,6 +60,10 @@ implementation "com.cloudpoint.plugins:adv-sdk:1.0.4"
 ```
 
 ![](./set_loc.png)
+
+#### 11.设置开关轮播图
+
+![](./adv_roud.png)
 
 
 
