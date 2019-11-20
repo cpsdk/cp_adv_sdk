@@ -10,8 +10,8 @@ android {
         applicationId "com.cloudpoint.app.adv.sdk.demo"
         minSdkVersion 15
         targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
+        versionCode 150001
+        versionName "1.50.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -36,7 +36,18 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //implementation project(':cp_adv_sdk')
 
-    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.8"
+
+    // adv sdk
+    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.22"
+
+    // 集成百度定位sdk
+    implementation "com.cloudpoint.plugins:shell-asset:3.1.25"
+    // 不集成百度定位sdk
+    //implementation "com.cloudpoint.plugins:shell-asset:3.0.22"
+
+    //implementation "com.cloudpoint.plugins:retrofit:3.0.220"
+
+
 
 
 }

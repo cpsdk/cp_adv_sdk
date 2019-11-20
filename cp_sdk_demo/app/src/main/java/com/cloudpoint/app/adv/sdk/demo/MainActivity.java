@@ -9,35 +9,46 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewStub;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
+import com.cloudpoint.plugins.log.CPLogger;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean isRunning = false;
+
 
     private Handler handler = new Handler(Looper.getMainLooper());
+
+    @Override
+    public void onAttachedToWindow() {
+
+        this.getWindow().addFlags(
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN
+                                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                );
+
+
+
+        super.onAttachedToWindow();
+
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 
-
+        isRunning = true;
         // 3. 绑定view
         bindView();
     }
@@ -58,8 +69,13 @@ public class MainActivity extends AppCompatActivity {
             handler.bind(imageView,videoView);
         }
 
+
+
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isRunning = false;
+    }
 }

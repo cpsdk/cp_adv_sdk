@@ -143,7 +143,7 @@ public class AdvEventListener implements IAdvertisementEvent {
      *          0： 播放开始
      *          1： 播放结束
      *          2： 计费结束
-     *          -1 或其它： 播放失败
+     *          -1  或其它： 播放失败
      */
     @Override
     public void notifyAdvTrackerStates(String s, int i) {

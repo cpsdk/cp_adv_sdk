@@ -1,6 +1,12 @@
 ##云点广告sdk接入文档
 
 
+**注意**
+```
+1. 同一设备上只能有一个apk集成sdk，多个集成sdk的应用运行时会不正常
+2. 一定要设置设备的位置信息
+```
+
 
 ### 广告接入步骤
 
@@ -18,7 +24,7 @@ maven { url "http://archiva.cpo2o.com:8000/repository/internal" }
 ![](./sdk_aar.png)
 
 ```
-implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.8"
+implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.20"
 ```
 ##### 3. Application中初化
 
@@ -66,4 +72,31 @@ implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.8"
 ![](./adv_roud.png)
 
 
+
+##### 12.集成百度定位sdk
+
+
+![](./baidu_manifest.png)
+- 使用百度定位sdk时,修改AndroidManifest.xml中百度的key值
+
+![](./baidu_location.png)
+
+- 设置loc 为空
+
+
+![](./baidu_location_gr.png)
+
+- 启用集成百度定位sdk asset
+
+	- 3.0.x 为不集成百度定位sdk的asset版本
+	- 3.1.x 为集成百度定位sdkasset版本
+
+
+##### 13.广告sdk（关闭/开启）
+
+```
+	handler.enableAdv(true); //开启
+	handler.enableAdv(false); //关闭
+	
+```
 

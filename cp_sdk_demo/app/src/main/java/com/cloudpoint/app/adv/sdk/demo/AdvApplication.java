@@ -2,14 +2,23 @@ package com.cloudpoint.app.adv.sdk.demo;
 
 import android.app.Application;
 import android.app.admin.DevicePolicyManager;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
+import com.cloudpoint.plugins.asset.module.fsm.impl.VMCheckNetwork;
+import com.cloudpoint.plugins.asset.service.VMAdvService;
+import com.cloudpoint.plugins.log.CPLogger;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.plugins.sdk.adv.CPAdvSdk;
-import com.cloudpoint.shell.adv.DefaultAdvManager;
+
+import com.cloudpoint.plugins.sdk.adv.IAdvPlayer;
 import com.cloudpoint.shell.common.device.DeviceAddress;
 import com.cloudpoint.shell.common.device.DeviceLatitudeLongitude;
 import com.cloudpoint.shell.common.device.DeviceLocation;
+import com.cloudpoint.shell.device.broadcast.DeviceInformationBroadCastReciever;
+import com.cloudpoint.shell.device.location.BaiduLocationService;
 import com.google.gson.Gson;
 
 
@@ -19,39 +28,86 @@ import com.google.gson.Gson;
  * @copyright Beijing CloudPoint Technology Co.,Ltd.
  * @email qiuzhang.rui@cpoao.com
  * @description:
+ *
+ * //System.setProperty(VMCheckNetwork.OFFLINE_MODE,"true");
  */
 
 public class AdvApplication extends Application {
 
+    Handler mHandler = new Handler(Looper.getMainLooper());
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         // 3.设置日志输出
-        System.setProperty(CPAdvSdk.LOG_ADV,"true");
-        System.setProperty(CPAdvSdk.LOG_DEBUG,"true");
-        System.setProperty(CPAdvSdk.LOG_FILE,"true");
-        System.setProperty(CPAdvSdk.LOG_HTTP,"true");
-        System.setProperty(CPAdvSdk.LOG_WEBSOCKET,"true");
-        System.setProperty(CPAdvSdk.LOG_DEBUG_EX,"true");
+        boolean debug = BuildConfig.DEBUG;
+        if(debug) {
+            System.setProperty(CPAdvSdk.LOG_ADV, "true");
+            System.setProperty(CPAdvSdk.LOG_DEBUG, "true");
+            System.setProperty(CPAdvSdk.LOG_FILE, "true");
+            System.setProperty(CPAdvSdk.LOG_HTTP, "true");
+            System.setProperty(CPAdvSdk.LOG_WEBSOCKET, "true");
+            System.setProperty(CPAdvSdk.LOG_ADV_ASSET,"true");
+            System.setProperty(CPAdvSdk.LOG_DEBUG_EX, "true");
+        }
+
+        System.setProperty(CPAdvSdk.EANBLE_ADV,"true");
+
+        //
+
+        System.getProperties().list(System.out);
 
 
         // 4. 初始化应用
-        boolean doInitialized = CPAdvSdk.init(AdvApplication.this,"201");
+        boolean doInitialized = CPAdvSdk.init(AdvApplication.this,"202");
 
         if(doInitialized){
             // 5. 增加监听接口。
 
             //DefaultAdvManager defaultAdvManager;
 
-            AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
+            final AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
             AdvEventListener advEventListener = new AdvEventListener();
             handler.setAdvertisementEvent(advEventListener);
             //启用手动播放模式
             handler.enableManualMode(true);
             //关闭轮播图
             handler.enableRoundPlay(false);
+            //开启广告/关闭广告
+            //handler.enableAdv(true);
+
+
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // 测试关闭广告
+                    CPLogger.d(" Disable Online Adv");
+                    handler.enableAdv(false);
+                }
+            },30000);
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //测试开启广告
+                    CPLogger.d(" Enable Online Adv");
+                    handler.enableAdv(true);
+                }
+            },60000);
+
+
+
+            // 检测播放器是否能够正常工作，如果报出异常，是播放器没有初始化成功
+            // If the player exception.
+            handler.setAdvPlayerLisenter(new IAdvPlayer() {
+                @Override
+                public void onPlayerError() {
+                    // if this happens
+                    CPLogger.d("AdvPlayer not Running.");
+                }
+            });
+
+
 
             /**
              *
@@ -92,6 +148,8 @@ public class AdvApplication extends Application {
             //
             // {"location":{"address":"中国北京市朝阳区北苑路229号","city":"北京市","disrict":"朝阳区","location_desc":"在金泉港附近","province":"北京市","street":"北苑路"},"gps":{"coor_type":"bd09ll","error_code":161,"langtitude":116.423292,"latitude":40.010727,"radius":50.499428}}
             //6. 设置 location信息
+            //loc = null; // 使用集成百度定位sdk时，将loc设置为空
+
             CPAdvSdk.setLocation(loc);
         }
 
