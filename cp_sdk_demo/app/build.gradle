@@ -41,11 +41,10 @@ dependencies {
     implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.22"
 
     // 集成百度定位sdk
-    implementation "com.cloudpoint.plugins:shell-asset:3.1.25"
+    implementation "com.cloudpoint.plugins:shell-asset:3.1.33"
     // 不集成百度定位sdk
-    //implementation "com.cloudpoint.plugins:shell-asset:3.0.22"
+    //implementation "com.cloudpoint.plugins:shell-asset:3.0.30"
 
-    //implementation "com.cloudpoint.plugins:retrofit:3.0.220"
 
 
 
