@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+
 android {
 
     compileSdkVersion 26
@@ -26,6 +27,8 @@ android {
 }
 
 dependencies {
+    //是否启动百度的定位api
+   // def enableBaiduApi = false
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -37,16 +40,13 @@ dependencies {
     //implementation project(':cp_adv_sdk')
 
 
-    // adv sdk
-    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.22"
+    // adv sdk (with baidu location api)
+    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.26"
 
-    // 集成百度定位sdk
-    implementation "com.cloudpoint.plugins:shell-asset:3.1.33"
-    // 不集成百度定位sdk
-    //implementation "com.cloudpoint.plugins:shell-asset:3.0.30"
-
-
-
+    //集成百度定位api
+    //implementation "com.cloudpoint.plugins:shell-asset:3.1.42"
+    // TODO: 未集成百度定位api 取消以下注释使用自定位系统
+     implementation "com.cloudpoint.plugins:shell-asset:3.0.42"
 
 
 }

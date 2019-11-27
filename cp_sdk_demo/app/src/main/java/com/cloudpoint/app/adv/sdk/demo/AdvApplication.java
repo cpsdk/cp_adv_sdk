@@ -10,6 +10,7 @@ import android.util.Log;
 import com.cloudpoint.plugins.asset.module.fsm.impl.VMCheckNetwork;
 import com.cloudpoint.plugins.asset.service.VMAdvService;
 import com.cloudpoint.plugins.log.CPLogger;
+import com.cloudpoint.plugins.log.CrashHandler;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.plugins.sdk.adv.CPAdvSdk;
 
@@ -39,6 +40,8 @@ public class AdvApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        CrashHandler.createHandler(getApplicationContext());
 
         // 3.设置日志输出
         boolean debug = BuildConfig.DEBUG;

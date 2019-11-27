@@ -24,7 +24,7 @@ maven { url "http://archiva.cpo2o.com:8000/repository/internal" }
 ![](./sdk_aar.png)
 
 ```
-implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.20"
+implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.26"
 ```
 ##### 3. Application中初化
 
@@ -90,6 +90,19 @@ implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.20"
 
 	- 3.0.x 为不集成百度定位sdk的asset版本
 	- 3.1.x 为集成百度定位sdkasset版本
+
+```
+
+    // adv sdk (with baidu location api)
+    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.26"
+
+    //集成百度定位api
+    //implementation "com.cloudpoint.plugins:shell-asset:3.1.42"
+    // TODO: 未集成百度定位api 取消以下注释使用自定位系统
+     implementation "com.cloudpoint.plugins:shell-asset:3.0.42"
+
+
+```
 
 
 ##### 13.广告sdk（关闭/开启）
