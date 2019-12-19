@@ -44,20 +44,19 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     // adv sdk (with baidu location api)
-    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.30"
+    implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.31"
+
 
 
 
 
     //集成百度定位api
-    //implementation "com.cloudpoint.plugins:shell-asset:3.1.42"
+    //implementation "com.cloudpoint.plugins:shell-asset:3.1.57"
 
     // TODO: 未集成百度定位api 取消以下注释使用自定位系统
     implementation "com.cloudpoint.plugins:shell-asset:3.0.57"
 
     implementation "com.cloudpoint.plugins:shell-adv-player:9.2.15"
 
-//     implementation ("com.cloudpoint.plugins:shell-adv-player:3.0.7"){
-//         exclude group: 'com.android.support'
-//     }
+
 }

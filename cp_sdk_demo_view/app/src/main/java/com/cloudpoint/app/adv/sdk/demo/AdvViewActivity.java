@@ -37,18 +37,32 @@ public class AdvViewActivity extends Activity {
         bindView();
     }
 
-
     AdvView advView;
     private void bindView(){
-
         advView = findViewById(R.id.adv_view);
-
+        //
         AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
         if(handler!=null){
             handler.bindView(advView);
         }
 
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
+
+
 
 
 }

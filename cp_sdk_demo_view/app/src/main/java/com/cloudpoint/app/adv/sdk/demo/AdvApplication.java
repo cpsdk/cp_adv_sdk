@@ -34,28 +34,12 @@ public class AdvApplication extends Application {
         super.onCreate();
         //可输出异常日志
         CrashHandler.createHandler(getApplicationContext());
-
-        // 3.设置日志输出
-        boolean debug = BuildConfig.DEBUG;
-        if(debug) {
-            System.setProperty(CPAdvSdk.LOG_ADV, "true");
-            System.setProperty(CPAdvSdk.LOG_DEBUG, "true");
-            System.setProperty(CPAdvSdk.LOG_FILE, "true");
-            System.setProperty(CPAdvSdk.LOG_HTTP, "true");
-            System.setProperty(CPAdvSdk.LOG_WEBSOCKET, "true");
-            System.setProperty(CPAdvSdk.LOG_ADV_ASSET,"true");
-            System.setProperty(CPAdvSdk.LOG_DEBUG_EX, "true");
-        }
-
-        System.setProperty(CPAdvSdk.EANBLE_ADV,"true");
-
-        //
-
-        System.getProperties().list(System.out);
+        //设置是否输出debug日志
+        CPAdvSdk.setDebug(BuildConfig.DEBUG);
 
 
         // 4. 初始化应用
-        boolean doInitialized = CPAdvSdk.init(AdvApplication.this,"202");
+        boolean doInitialized = CPAdvSdk.init(AdvApplication.this,"10000");
 
         if(doInitialized){
             // 5. 增加监听接口。
@@ -90,7 +74,6 @@ public class AdvApplication extends Application {
                         handler.enableAdv(true);
                     }
                 }, 60000);
-
 
             }
             // 检测播放器是否能够正常工作，如果报出异常，是播放器没有初始化成功
