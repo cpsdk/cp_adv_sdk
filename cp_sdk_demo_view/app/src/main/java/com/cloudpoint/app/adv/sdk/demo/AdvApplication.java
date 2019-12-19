@@ -1,25 +1,17 @@
 package com.cloudpoint.app.adv.sdk.demo;
 
 import android.app.Application;
-import android.app.admin.DevicePolicyManager;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
-import com.cloudpoint.plugins.asset.module.fsm.impl.VMCheckNetwork;
-import com.cloudpoint.plugins.asset.service.VMAdvService;
 import com.cloudpoint.plugins.log.CPLogger;
 import com.cloudpoint.plugins.log.CrashHandler;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.plugins.sdk.adv.CPAdvSdk;
-
 import com.cloudpoint.plugins.sdk.adv.IAdvPlayer;
 import com.cloudpoint.shell.common.device.DeviceAddress;
 import com.cloudpoint.shell.common.device.DeviceLatitudeLongitude;
 import com.cloudpoint.shell.common.device.DeviceLocation;
-import com.cloudpoint.shell.device.broadcast.DeviceInformationBroadCastReciever;
-import com.cloudpoint.shell.device.location.BaiduLocationService;
 import com.google.gson.Gson;
 
 
@@ -40,7 +32,7 @@ public class AdvApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        //可输出异常日志
         CrashHandler.createHandler(getApplicationContext());
 
         // 3.设置日志输出

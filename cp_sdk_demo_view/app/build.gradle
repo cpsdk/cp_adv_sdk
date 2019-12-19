@@ -45,7 +45,8 @@ dependencies {
 
     // adv sdk (with baidu location api)
     implementation "com.cloudpoint.plugins:adv-sdk:1.50.0.30"
-    
+
+
 
 
     //集成百度定位api

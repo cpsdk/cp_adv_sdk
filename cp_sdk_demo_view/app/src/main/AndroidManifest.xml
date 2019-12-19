@@ -33,27 +33,23 @@
 
 
         <!-- 集成百度定位sdk，请输入 -->
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="8y4LVGZuSQMHDms3FK0sGjVDN5ChcQfO"
-            tools:replace="android:value" />
+        <!--<meta-data-->
+            <!--android:name="com.baidu.lbsapi.API_KEY"-->
+            <!--android:value="8y4LVGZuSQMHDms3FK0sGjVDN5ChcQfO"-->
+            <!--tools:replace="android:value" />-->
 
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":baidLocation" />
+        <!--<service-->
+            <!--android:name="com.baidu.location.f"-->
+            <!--android:enabled="true"-->
+            <!--android:process=":baidLocation" />-->
 
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".AdvViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

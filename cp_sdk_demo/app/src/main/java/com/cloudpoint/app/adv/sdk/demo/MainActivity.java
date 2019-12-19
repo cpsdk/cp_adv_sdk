@@ -15,6 +15,7 @@ import android.widget.VideoView;
 
 import com.cloudpoint.plugins.log.CPLogger;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
+import com.google.android.exoplayer2.ui.PlayerView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -55,14 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     ImageView imageView;
-    VideoView videoView;
+    //VideoView videoView;
+    PlayerView videoView;
 
     // 3. 绑定view
     private void bindView(){
         if (null == imageView)
             imageView = (ImageView) ((ViewStub) findViewById(R.id.cb_advertisement_picture)).inflate();
         if (null == videoView)
-            videoView = (VideoView) (   (ViewStub) findViewById(R.id.vv_advertisemen_video)).inflate();
+            videoView = (PlayerView) (   (ViewStub) findViewById(R.id.vv_advertisemen_video)).inflate();
 
         AdvPlayerHandler handler = AdvPlayerHandler.getInstance();
         if(handler!=null){
