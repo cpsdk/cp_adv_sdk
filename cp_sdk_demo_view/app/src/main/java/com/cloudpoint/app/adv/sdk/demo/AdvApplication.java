@@ -52,7 +52,7 @@ public class AdvApplication extends Application {
             //启用手动播放模式
             handler.enableManualMode(true);
             //关闭轮播图
-            handler.enableRoundPlay(true);
+            handler.enableRoundPlay(false);
             //开启广告/关闭广告
             //handler.enableAdv(true);
 
