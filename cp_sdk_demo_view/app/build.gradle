@@ -51,7 +51,8 @@ dependencies {
     // TODO: 未集成百度定位api 取消以下注释使用自定位系统
     implementation "com.cloudpoint.plugins:shell-asset:3.0.60"
 
-    implementation "com.cloudpoint.plugins:shell-adv-player:9.2.15"
+
+    implementation "com.cloudpoint.plugins:shell-adv-player:9.2.23"
 
 
 }
