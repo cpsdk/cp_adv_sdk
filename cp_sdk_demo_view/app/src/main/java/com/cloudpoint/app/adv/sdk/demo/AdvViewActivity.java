@@ -33,8 +33,7 @@ public class AdvViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adv_view);
-        // 3. 绑定view
-        bindView();
+
     }
 
     AdvView advView;
@@ -58,7 +57,8 @@ public class AdvViewActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        // 3. 绑定view
+         bindView();
 
     }
 

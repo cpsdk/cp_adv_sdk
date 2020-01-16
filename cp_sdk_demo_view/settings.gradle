@@ -1,1 +1,10 @@
 include ':app'
+//
+//project(':shell-adv-player').projectDir = new File('/Users/rqz/Downloads/git.advsdk/tablet_app_plugins/tablet-plugins/shell-adv-player')
+//project(':cp_adv_sdk').projectDir = new File('/Users/rqz/Downloads/git.advsdk/tablet_app_plugins/table_adv_plugins/cp_adv_sdk')
+//project(':shell-asset').projectDir = new File('/Users/rqz/Downloads/git.advsdk/tablet_app_plugins/tablet-plugins/shell-asset')
+//project(':shell-adv').projectDir = new File('/Users/rqz/Downloads/git.advsdk/tablet_app_plugins/tablet-plugins/shell-adv')
+//
+//
+//
+//

@@ -32,8 +32,7 @@ public class AdvApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //可输出异常日志
-        CrashHandler.createHandler(getApplicationContext());
+
         //设置是否输出debug日志
         CPAdvSdk.setDebug(BuildConfig.DEBUG);
 
@@ -57,25 +56,7 @@ public class AdvApplication extends Application {
             //handler.enableAdv(true);
 
 
-            if(false) {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 测试关闭广告
-                        CPLogger.d(" Disable Online Adv");
-                        handler.enableAdv(false);
-                    }
-                }, 30000);
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //测试开启广告
-                        CPLogger.d(" Enable Online Adv");
-                        handler.enableAdv(true);
-                    }
-                }, 60000);
 
-            }
             // 检测播放器是否能够正常工作，如果报出异常，是播放器没有初始化成功
             // If the player exception.
             handler.setAdvPlayerLisenter(new IAdvPlayer() {
