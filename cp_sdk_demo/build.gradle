@@ -18,7 +18,7 @@ buildscript {
 ext{
 
 
-    shellAssetVersion = '3.0.64'
+    shellAssetVersion = '3.1.65'
     advSdkVersion = '1.50.0.53'
     shellAdvPlayerVersion ="3.0.15"
 

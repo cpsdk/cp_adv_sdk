@@ -37,7 +37,7 @@ public class AdvApplication extends Application {
 
 
         // 4. 初始化应用
-        boolean initialized = CPAdvSdk.init(AdvApplication.this,"10000",true,true);
+        boolean initialized = CPAdvSdk.init(AdvApplication.this,"202001155854",true,true);
 
         if(initialized) {
             // 5. 检测是否初始化播放器
