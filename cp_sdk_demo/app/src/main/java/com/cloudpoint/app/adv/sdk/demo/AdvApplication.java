@@ -51,6 +51,8 @@ public class AdvApplication extends Application {
             //处理计费或手动播放线上广告
             CPAdvSdk.setAdvertisementEvent(new AdvEventListener());
 
+           // CPAdvSdk.enableRoudPlay(true);
+
 
             if(BuildConfig.ENABLE_BAIDU_LOCATION_API){
                 locationWithBaiduApi();
