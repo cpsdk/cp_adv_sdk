@@ -74,7 +74,7 @@ public class AdvApplication extends Application {
             //
             // {"location":{"address":"中国北京市朝阳区北苑路229号","city":"北京市","disrict":"朝阳区","location_desc":"在金泉港附近","province":"北京市","street":"北苑路"},"gps":{"coor_type":"bd09ll","error_code":161,"langtitude":116.423292,"latitude":40.010727,"radius":50.499428}}
             //6. 设置 location信息
-            //loc = null; // 使用集成百度定位sdk时，将loc设置为空
+            loc = null; // 使用集成百度定位sdk时，将loc设置为空
             CPAdvSdk.setLocation(loc);
         }
 
