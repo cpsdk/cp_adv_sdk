@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+
+
+// //是否启用baidu定位api
+static boolean enableBaiduLocationApi(){
+    return false
+}
+
+
 android {
 
     compileSdkVersion 26
@@ -19,6 +27,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("boolean", "ENABLE_BAIDU_LOCATION_API", "${enableBaiduLocationApi()}")
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("boolean", "ENABLE_BAIDU_LOCATION_API", "${enableBaiduLocationApi()}")
         }
     }
 
@@ -46,8 +63,14 @@ dependencies {
 
     // 广告sdk插件
     implementation "com.cloudpoint.plugins:adv-sdk:${advSdkVersion}"
+
     // 服务插件
-    implementation "com.cloudpoint.plugins:shell-asset:${shellAssetVersion}"
+    if(enableBaiduLocationApi()){
+        implementation "com.cloudpoint.plugins:shell-asset:${shellAssetVersionWitBaiduApi}"
+    }else{
+        implementation "com.cloudpoint.plugins:shell-asset:${shellAssetVersionWithoutBaiduApi}"
+    }
+
     // 播放器插件
     implementation "com.cloudpoint.plugins:shell-adv-player:${shellAdvPlayerVersion}"
 
