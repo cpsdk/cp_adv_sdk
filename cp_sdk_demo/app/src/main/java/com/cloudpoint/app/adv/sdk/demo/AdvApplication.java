@@ -6,6 +6,7 @@ import android.os.Looper;
 
 import com.cloudpoint.plugins.log.CPLogger;
 import com.cloudpoint.plugins.log.CrashHandler;
+import com.cloudpoint.plugins.network.NetworkStats;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.plugins.sdk.adv.CPAdvSdk;
 import com.cloudpoint.plugins.sdk.adv.IAdvPlayer;
@@ -13,6 +14,11 @@ import com.cloudpoint.shell.adv.mediaplayer.IAdvertisementPlayerListener;
 import com.cloudpoint.shell.common.device.DeviceAddress;
 import com.cloudpoint.shell.common.device.DeviceLatitudeLongitude;
 import com.cloudpoint.shell.common.device.DeviceLocation;
+
+import com.cloudpoint.shell.device.broadcast.DeviceInformationBroadCastReciever;
+import com.cloudpoint.shell.device.location.BaiduLocationService;
+import com.cloudpoint.shell.file.FileDownloadService;
+
 import com.google.gson.Gson;
 
 
@@ -35,6 +41,7 @@ public class AdvApplication extends Application {
         //设置是否输出debug日志
         CPAdvSdk.setDebug(BuildConfig.DEBUG);
 
+        FileDownloadService downloadService;
 
         // 4. 初始化应用
         boolean initialized = CPAdvSdk.init(AdvApplication.this,"202001155854",true,true);
@@ -61,9 +68,67 @@ public class AdvApplication extends Application {
             }
 
 
+
+            CPAdvSdk.enableAdv(true);
+
+
+
+            printUsage();
+
+
+
         }
 
 
+    }
+
+
+    private void printUsage(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                while(true){
+
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    long ts = System.currentTimeMillis();
+                    NetworkStats.DataUsage usage = CPAdvSdk.getDataUsage();
+
+                    long bytes = usage.getRx()+usage.getTx();
+
+                    long k = 1024;
+                    long m = 1024*k;
+                    long g = 1024*m;
+                    double u = 0.0f;
+                    String data ="";
+                    if(bytes/g>1){
+                        u = bytes*1.0/g;
+                        data = String.format(" usage : %5.2f g , used : %5d ms",u,(System.currentTimeMillis()-ts));
+                    } else if (bytes/m>1){
+                        u = bytes*1.0/m;
+                        data = String.format(" usage : %5.2f m , used : %5d ms",u,(System.currentTimeMillis()-ts));
+                    }
+                    else if(bytes/k>1){
+                        u = bytes/k;
+
+                        data = String.format(" usage : %5.2f k  , used : %5d ms",u,(System.currentTimeMillis()-ts));
+
+                    }else{
+                        u = bytes;
+                        data = String.format(" usage : %5.2f b , used : %5d ms",u,(System.currentTimeMillis()-ts));
+
+                    }
+
+                    System.out.println(data);
+                }
+
+            }
+        }).start();
     }
 
 

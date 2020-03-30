@@ -19,16 +19,15 @@ ext{
 
     //是否启用baidu定位api
     //使用sdk集成百度定位api
-    shellAssetVersionWitBaiduApi =  '3.1.65.1'
+    shellAssetVersionWitBaiduApi =  '3.1.65.3'
 
     //不使用sdk集成百度定位api
-    shellAssetVersionWithoutBaiduApi = '3.0.65.1'
+    shellAssetVersionWithoutBaiduApi = '3.0.65.3'
+
+    advSdkVersion = '1.50.0.54'
+    shellAdvPlayerVersion ="3.0.15.1"
 
 
-
-
-    advSdkVersion = '1.50.0.53'
-    shellAdvPlayerVersion ="3.0.15"
 
 }
 
