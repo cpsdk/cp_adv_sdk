@@ -4,12 +4,15 @@ import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.cloudpoint.plugins.asset.module.fsm.impl.VMCheckNetwork;
+import com.cloudpoint.plugins.asset.service.VMService;
 import com.cloudpoint.plugins.log.CPLogger;
 import com.cloudpoint.plugins.log.CrashHandler;
 import com.cloudpoint.plugins.network.NetworkStats;
 import com.cloudpoint.plugins.sdk.adv.AdvPlayerHandler;
 import com.cloudpoint.plugins.sdk.adv.CPAdvSdk;
 import com.cloudpoint.plugins.sdk.adv.IAdvPlayer;
+import com.cloudpoint.plugins.sdk.adv.ISDkState;
 import com.cloudpoint.shell.adv.mediaplayer.IAdvertisementPlayerListener;
 import com.cloudpoint.shell.common.device.DeviceAddress;
 import com.cloudpoint.shell.common.device.DeviceLatitudeLongitude;
@@ -30,9 +33,14 @@ import com.google.gson.Gson;
  * @description:
  *
  * //System.setProperty(VMCheckNetwork.OFFLINE_MODE,"true");
+ * System.setProperty("offline_mode","true");
  */
 
 public class AdvApplication extends Application {
+
+
+    boolean  enableBindStatedNotified = true;
+    boolean  enableSdkDataUsage = true;
 
     @Override
     public void onCreate() {
@@ -41,10 +49,35 @@ public class AdvApplication extends Application {
         //设置是否输出debug日志
         CPAdvSdk.setDebug(BuildConfig.DEBUG);
 
-        FileDownloadService downloadService;
+
+
+
+
 
         // 4. 初始化应用
-        boolean initialized = CPAdvSdk.init(AdvApplication.this,"202001155854",true,true);
+        // 可以选择两种方式初始化。
+        boolean initialized = enableBindStatedNotified?
+
+                CPAdvSdk.init(AdvApplication.this,
+                            "201901155854",
+                            true,
+                            true,
+                            new ISDkState() {
+
+                                @Override
+                                public void onBinded() {
+                                    //设备已绑定，回调通知已绑定
+                                    System.out.println("Device binded!");
+                                }
+                            }):
+
+                CPAdvSdk.init(AdvApplication.this,
+                        "201901155854",
+                        true,
+                        true);
+
+
+
 
         if(initialized) {
             // 5. 检测是否初始化播放器
@@ -58,22 +91,15 @@ public class AdvApplication extends Application {
             //处理计费或手动播放线上广告
             CPAdvSdk.setAdvertisementEvent(new AdvEventListener());
 
-           // CPAdvSdk.enableRoudPlay(true);
-
-
             if(BuildConfig.ENABLE_BAIDU_LOCATION_API){
                 locationWithBaiduApi();
             }else{
                 locationWithoutBaiduApi();
             }
 
-
-
-            CPAdvSdk.enableAdv(true);
-
-
-
-            printUsage();
+            //输出流量使用
+            if(enableSdkDataUsage)
+                    printUsage();
 
 
 
@@ -81,6 +107,9 @@ public class AdvApplication extends Application {
 
 
     }
+
+
+
 
 
     private void printUsage(){
